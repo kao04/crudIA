@@ -33,12 +33,12 @@ app.get("/all-movies", (request, response) => {
 })
 
 app.post("/add-movie", (request, response) => {
-    const { id, titulo, genero, duracao, classificacao_etaria } = request.body
+    const { titulo, genero, duracao, classificacao_etaria } = request.body
 
     const insertCommand = 
-        "INSERT INTO Filmes_kalebe(id, name, genero, duracao, classificacao) VALUES (?, ?, ?, ?, ?)"
+        "INSERT INTO Filmes_kalebe(name, genero, duracao, classificacao) VALUES (?, ?, ?, ?)"
 
-    database.query(insertCommand, [id, titulo, genero, duracao, classificacao_etaria], (error) => {
+    database.query(insertCommand, [titulo, genero, duracao, classificacao_etaria], (error) => {
         if (error) {
             console.log(error)
            

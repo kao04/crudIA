@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastrar.css">
+    <title>Cadastrar novo filme</title>
+</head>
+<body>
+    <header>
+        <a href="../index.html">Voltar</a>
+        <h1>Cadastrar novo filme</h1>
+    </header>
+
+    <main>
+        <form>
+            <div>
+                <label for="title">Título do filme:</label>
+                <input type="text" id="title" placeholder="Digite aqui o título">
+            </div>
+            <div>
+                <label for="gender">Gênero:</label>
+                <input type="text" id="gender" placeholder="Digite aqui o gênero">
+            </div>
+            <div>
+                <label for="ageLimit">Classificação indicativa:</label>
+                <input type="number" id="ageLimit" placeholder="Digite aqui a classificação indicativa">
+            </div>
+            <div>
+                <label for="duration">Duração:</label>
+                <input type="number" id="duration" placeholder="Digite aqui a duração">
+            </div>
+        </form>
+
+        <button onclick="cadastrarFilme()">Cadastrar</button>
+    </main>
+
+    <script src="cadastrar.js"></script>
+</body>
+</html>
