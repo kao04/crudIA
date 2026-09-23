@@ -1,40 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Filme - CineStudio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="cadastrar.css">
-    <title>Cadastrar novo filme</title>
 </head>
 <body>
-    <header>
-        <a href="../index.html">Voltar</a>
-        <h1>Cadastrar novo filme</h1>
+    <div class="ambient-background">
+        <div class="glow-spot spot-1"></div>
+        <div class="glow-spot spot-2"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand-logo">
+                <a href="../index.html" class="btn btn-secondary btn-icon-only" title="Voltar para a página principal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                </a>
+                <div>
+                    <h1>Cadastrar Filme</h1>
+                    <p class="brand-subtitle">Adicionar novo título ao acervo</p>
+                </div>
+            </div>
+
+            <div class="api-selector" title="Servidor Backend em Execução">
+                <span class="api-indicator"></span>
+                <select id="apiSelect" onchange="alterarApi(this.value)">
+                    <option value="https://crudfilmes-88qu.vercel.app">API Nuvem (Vercel)</option>
+                    <option value="http://localhost:8080">API Local (Porta 8080)</option>
+                </select>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <form>
-            <div>
-                <label for="title">Título do filme:</label>
-                <input type="text" id="title" placeholder="Digite aqui o título">
-            </div>
-            <div>
-                <label for="gender">Gênero:</label>
-                <input type="text" id="gender" placeholder="Digite aqui o gênero">
-            </div>
-            <div>
-                <label for="ageLimit">Classificação indicativa:</label>
-                <input type="number" id="ageLimit" placeholder="Digite aqui a classificação indicativa">
-            </div>
-            <div>
-                <label for="duration">Duração:</label>
-                <input type="number" id="duration" placeholder="Digite aqui a duração">
-            </div>
-        </form>
+    <main class="main-content" style="max-width: 580px;">
+        <div class="form-card">
+            <form onsubmit="cadastrarFilme(event)">
+                <div class="form-group">
+                    <label for="title">Título do Filme</label>
+                    <input type="text" id="title" placeholder="Digite o título do filme" required>
+                </div>
 
-        <button onclick="cadastrarFilme()">Cadastrar</button>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">Gênero</label>
+                        <input type="text" id="gender" placeholder="Ex: Ação, Drama..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration">Duração (minutos)</label>
+                        <input type="number" id="duration" placeholder="Ex: 120" min="1" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ageLimit">Classificação Indicativa (idade)</label>
+                    <input type="number" id="ageLimit" placeholder="Ex: 14 (0 para Livre)" min="0" required>
+                </div>
+
+                <div class="form-actions">
+                    <a href="../index.html" class="btn btn-tertiary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary" id="btnSubmitCadastrar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        <span>Cadastrar Filme</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </main>
+
+    <div id="toastContainer" class="toast-container"></div>
 
     <script src="cadastrar.js"></script>
 </body>
-</html>
+</html>
